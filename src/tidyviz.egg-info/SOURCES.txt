@@ -1,0 +1,15 @@
+LICENSE
+README.md
+pyproject.toml
+src/tidyviz/__init__.py
+src/tidyviz.egg-info/PKG-INFO
+src/tidyviz.egg-info/SOURCES.txt
+src/tidyviz.egg-info/dependency_links.txt
+src/tidyviz.egg-info/requires.txt
+src/tidyviz.egg-info/top_level.txt
+src/tidyviz/tidy/__init__.py
+src/tidyviz/tidy/reshape.py
+src/tidyviz/tidy/validate.py
+src/tidyviz/viz/__init__.py
+src/tidyviz/viz/categorical.py
+src/tidyviz/viz/themes.py

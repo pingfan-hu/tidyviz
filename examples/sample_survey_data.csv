@@ -1,0 +1,26 @@
+respondent_id,age,gender,preferred_contact,satisfaction,recommend_score,favorite_colors,usage_frequency,product_rating,comments
+1,25,Female,Email,5,9,"Blue,Green",Daily,4.5,Great product!
+2,34,Male,Phone,4,8,Red,Weekly,4.0,Very satisfied
+3,45,Female,Email,3,7,"Blue,Red,Yellow",Monthly,3.5,Could be better
+4,28,Non-binary,Text,5,10,Green,Daily,5.0,Absolutely love it
+5,52,Male,Email,2,5,Blue,Rarely,2.5,Not what I expected
+6,31,Female,Phone,4,8,"Red,Green",Weekly,4.0,Good value
+7,29,Male,Email,5,9,Blue,Daily,4.8,
+8,38,Female,Text,3,6,"Yellow,Green",Monthly,3.0,Average experience
+9,42,Male,Email,4,8,Red,Weekly,4.2,Would recommend
+10,27,Female,Phone,5,10,"Blue,Green,Red",Daily,5.0,Perfect for my needs
+11,55,Male,Email,1,3,Blue,Rarely,1.5,Disappointed
+12,33,Non-binary,Text,4,9,Green,Weekly,4.5,Very good
+13,26,Female,Email,5,10,"Blue,Yellow",Daily,4.9,Exceeded expectations
+14,41,Male,Phone,3,7,Red,Monthly,3.2,It's okay
+15,48,Female,Email,2,4,"Green,Blue",Rarely,2.0,Several issues
+16,30,Male,Text,4,8,Yellow,Weekly,4.1,Happy with purchase
+17,36,Female,Email,5,9,"Blue,Red",Daily,4.7,Highly recommend
+18,44,Male,Phone,3,6,Green,Monthly,3.5,
+19,22,Female,Email,4,8,"Red,Yellow,Blue",Weekly,4.3,Good overall
+20,50,Male,Text,5,10,Blue,Daily,5.0,Best decision ever
+21,32,Female,Email,,7,"Green,Yellow",Weekly,3.8,Missing satisfaction rating
+22,39,Male,Phone,4,,Red,Monthly,4.0,Missing recommend score
+23,46,Female,Email,3,6,,Rarely,3.0,No color selected
+24,35,Non-binary,Text,5,9,"Blue,Green,Red,Yellow",Daily,4.6,Love all the features
+25,28,Male,Email,4,8,Blue,Weekly,4.4,Would buy again

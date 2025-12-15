@@ -1,0 +1,26 @@
+respondent_id,age,gender,preferred_contact,satisfaction,recommend_score,favorite_colors,usage_frequency,product_rating,comments,satisfaction_valid,recommend_score_valid
+1,25,Female,Email,5.0,9.0,"Blue,Green",Daily,4.5,Great product!,True,True
+2,34,Male,Phone,4.0,8.0,Red,Weekly,4.0,Very satisfied,True,True
+3,45,Female,Email,3.0,7.0,"Blue,Red,Yellow",Monthly,3.5,Could be better,True,True
+4,28,Non-binary,Text,5.0,10.0,Green,Daily,5.0,Absolutely love it,True,True
+5,52,Male,Email,2.0,5.0,Blue,Rarely,2.5,Not what I expected,True,True
+6,31,Female,Phone,4.0,8.0,"Red,Green",Weekly,4.0,Good value,True,True
+7,29,Male,Email,5.0,9.0,Blue,Daily,4.8,,True,True
+8,38,Female,Text,3.0,6.0,"Yellow,Green",Monthly,3.0,Average experience,True,True
+9,42,Male,Email,4.0,8.0,Red,Weekly,4.2,Would recommend,True,True
+10,27,Female,Phone,5.0,10.0,"Blue,Green,Red",Daily,5.0,Perfect for my needs,True,True
+11,55,Male,Email,1.0,3.0,Blue,Rarely,1.5,Disappointed,True,True
+12,33,Non-binary,Text,4.0,9.0,Green,Weekly,4.5,Very good,True,True
+13,26,Female,Email,5.0,10.0,"Blue,Yellow",Daily,4.9,Exceeded expectations,True,True
+14,41,Male,Phone,3.0,7.0,Red,Monthly,3.2,It's okay,True,True
+15,48,Female,Email,2.0,4.0,"Green,Blue",Rarely,2.0,Several issues,True,True
+16,30,Male,Text,4.0,8.0,Yellow,Weekly,4.1,Happy with purchase,True,True
+17,36,Female,Email,5.0,9.0,"Blue,Red",Daily,4.7,Highly recommend,True,True
+18,44,Male,Phone,3.0,6.0,Green,Monthly,3.5,,True,True
+19,22,Female,Email,4.0,8.0,"Red,Yellow,Blue",Weekly,4.3,Good overall,True,True
+20,50,Male,Text,5.0,10.0,Blue,Daily,5.0,Best decision ever,True,True
+21,32,Female,Email,,7.0,"Green,Yellow",Weekly,3.8,Missing satisfaction rating,True,True
+22,39,Male,Phone,4.0,,Red,Monthly,4.0,Missing recommend score,True,True
+23,46,Female,Email,3.0,6.0,,Rarely,3.0,No color selected,True,True
+24,35,Non-binary,Text,5.0,9.0,"Blue,Green,Red,Yellow",Daily,4.6,Love all the features,True,True
+25,28,Male,Email,4.0,8.0,Blue,Weekly,4.4,Would buy again,True,True
