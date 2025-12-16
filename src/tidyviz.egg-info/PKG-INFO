@@ -33,8 +33,10 @@ Dynamic: license-file
 
 # TidyViz
 
+[![PyPI version](https://badge.fury.io/py/tidyviz.svg)](https://badge.fury.io/py/tidyviz)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Downloads](https://pepy.tech/badge/tidyviz)](https://pepy.tech/project/tidyviz)
 
 A Python package for survey data cleaning and visualization.
 
@@ -54,6 +56,8 @@ A Python package for survey data cleaning and visualization.
 - Survey-appropriate styling
 
 ## Installation
+
+Install from [PyPI](https://pypi.org/project/tidyviz/):
 
 ```bash
 pip install tidyviz
@@ -186,32 +190,17 @@ colors = tv.viz.get_palette('categorical', n_colors=5)
 
 ## Examples
 
-See the `examples/` directory for complete workflows:
-- `example_tidy.py` - Data cleaning pipeline
-- `example_viz.py` - Visualization examples
+See the [`examples/`](examples/) directory for complete workflows:
+- [`example_tidy.py`](examples/example_tidy.py) - Data cleaning pipeline
+- [`example_viz.py`](examples/example_viz.py) - Visualization examples
 
-## API Reference
+## Documentation
 
-### `tidyviz.tidy`
+📚 **[Complete Documentation](docs/)** - Full guides and API reference
 
-| Function | Description |
-|----------|-------------|
-| `expand_multiple_choice()` | Convert comma-separated values to binary columns |
-| `collapse_multiple_choice()` | Convert binary columns to comma-separated values |
-| `check_response_range()` | Validate responses within expected range |
-| `detect_missing_patterns()` | Analyze missing data patterns |
-| `flag_straight_liners()` | Detect identical responses across questions |
-| `detect_speeders()` | Identify unusually fast completion times |
-| `check_logical_consistency()` | Validate custom logical rules |
-
-### `tidyviz.viz`
-
-| Function | Description |
-|----------|-------------|
-| `plot_single_choice()` | Bar chart for single-choice questions |
-| `plot_multiple_choice()` | Bar chart for multiple-choice questions |
-| `set_survey_style()` | Apply survey-appropriate styling |
-| `get_palette()` | Get color palette for visualizations |
+- **[API Reference](docs/API.md)** - Detailed function documentation with parameters and examples
+- **[User Guide](docs/USER_GUIDE.md)** - Comprehensive tutorials and workflows
+- **[Quick Reference](docs/QUICK_REFERENCE.md)** - Concise syntax cheat sheet
 
 ## Requirements
 
