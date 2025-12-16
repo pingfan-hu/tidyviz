@@ -13,10 +13,28 @@ from typing import Optional, List
 SURVEY_PALETTES = {
     "default": ["#2E86AB", "#A23B72", "#F18F01", "#C73E1D", "#6A994E"],
     "likert": ["#D7191C", "#FDAE61", "#FFFFBF", "#A6D96A", "#1A9641"],
-    "categorical": ["#4E79A7", "#F28E2B", "#E15759", "#76B7B2", "#59A14F",
-                    "#EDC948", "#B07AA1", "#FF9DA7", "#9C755F", "#BAB0AC"],
-    "sequential": ["#FFF5EB", "#FEE6CE", "#FDD0A2", "#FDAE6B", "#FD8D3C",
-                   "#F16913", "#D94801", "#8C2D04"],
+    "categorical": [
+        "#4E79A7",
+        "#F28E2B",
+        "#E15759",
+        "#76B7B2",
+        "#59A14F",
+        "#EDC948",
+        "#B07AA1",
+        "#FF9DA7",
+        "#9C755F",
+        "#BAB0AC",
+    ],
+    "sequential": [
+        "#FFF5EB",
+        "#FEE6CE",
+        "#FDD0A2",
+        "#FDAE6B",
+        "#FD8D3C",
+        "#F16913",
+        "#D94801",
+        "#8C2D04",
+    ],
     "nps": ["#D7191C", "#FDAE61", "#1A9641"],  # Detractor, Passive, Promoter
 }
 
@@ -38,21 +56,26 @@ def set_survey_style(style: str = "default", palette: str = "default") -> None:
     """
     # Base seaborn style
     if style == "minimal":
-        sns.set_style("whitegrid", {
-            "axes.edgecolor": "0.8",
-            "grid.color": "0.9",
-            "axes.spines.top": False,
-            "axes.spines.right": False,
-        })
+        sns.set_style(
+            "whitegrid",
+            {
+                "axes.edgecolor": "0.8",
+                "grid.color": "0.9",
+                "axes.spines.top": False,
+                "axes.spines.right": False,
+            },
+        )
     elif style == "presentation":
         sns.set_style("white")
-        plt.rcParams.update({
-            "font.size": 12,
-            "axes.titlesize": 14,
-            "axes.labelsize": 12,
-            "xtick.labelsize": 10,
-            "ytick.labelsize": 10,
-        })
+        plt.rcParams.update(
+            {
+                "font.size": 12,
+                "axes.titlesize": 14,
+                "axes.labelsize": 12,
+                "xtick.labelsize": 10,
+                "ytick.labelsize": 10,
+            }
+        )
     else:  # default
         sns.set_style("whitegrid")
 
@@ -63,14 +86,18 @@ def set_survey_style(style: str = "default", palette: str = "default") -> None:
         sns.set_palette(palette)
 
     # Common settings for survey charts
-    plt.rcParams.update({
-        "figure.figsize": (10, 6),
-        "axes.grid": True,
-        "grid.alpha": 0.3,
-    })
+    plt.rcParams.update(
+        {
+            "figure.figsize": (10, 6),
+            "axes.grid": True,
+            "grid.alpha": 0.3,
+        }
+    )
 
 
-def get_palette(palette_name: str = "default", n_colors: Optional[int] = None) -> List[str]:
+def get_palette(
+    palette_name: str = "default", n_colors: Optional[int] = None
+) -> List[str]:
     """
     Get a color palette for survey visualizations.
 

@@ -103,7 +103,9 @@ def long_to_wide(
 
     # Flatten column names if they're multi-level
     if isinstance(result.columns, pd.MultiIndex):
-        result.columns = ['_'.join(map(str, col)).strip() for col in result.columns.values]
+        result.columns = [
+            "_".join(map(str, col)).strip() for col in result.columns.values
+        ]
 
     return result.reset_index()
 
@@ -224,18 +226,14 @@ def collapse_multiple_choice(
     # Extract option names from column names (remove common prefix)
     def get_option_name(col):
         # Try to extract the part after the last underscore
-        parts = col.split('_')
+        parts = col.split("_")
         return parts[-1] if len(parts) > 1 else col
 
     option_names = [get_option_name(col) for col in columns]
 
     # Create the collapsed column
     def collapse_row(row):
-        selected = [
-            option_names[i]
-            for i, col in enumerate(columns)
-            if row[col] == 1
-        ]
+        selected = [option_names[i] for i, col in enumerate(columns) if row[col] == 1]
         return sep.join(selected) if selected else np.nan
 
     result_df[new_column] = df.apply(collapse_row, axis=1)

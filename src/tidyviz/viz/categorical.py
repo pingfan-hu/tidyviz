@@ -6,11 +6,9 @@ survey questions.
 """
 
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
-from typing import Optional, List, Tuple, Union
-from .themes import get_palette, format_percentage_axis
+from typing import Optional, List, Tuple
+from .themes import get_palette
 
 
 def plot_single_choice(
@@ -83,25 +81,25 @@ def plot_single_choice(
 
     # Set labels
     ax.set_xticks(range(len(counts)))
-    ax.set_xticklabels(counts.index, rotation=45, ha='right')
-    ax.set_ylabel('Count')
-    ax.set_title(title or f'{column} Distribution')
+    ax.set_xticklabels(counts.index, rotation=45, ha="right")
+    ax.set_ylabel("Count")
+    ax.set_title(title or f"{column} Distribution")
 
     # Add percentage labels if requested
     if show_percentages:
         for i, (bar, pct) in enumerate(zip(bars, percentages.values)):
             height = bar.get_height()
             ax.text(
-                bar.get_x() + bar.get_width() / 2.,
+                bar.get_x() + bar.get_width() / 2.0,
                 height,
-                f'{pct:.1%}\n(n={int(height)})',
-                ha='center',
-                va='bottom',
-                fontsize=9
+                f"{pct:.1%}\n(n={int(height)})",
+                ha="center",
+                va="bottom",
+                fontsize=9,
             )
 
     # Add grid
-    ax.grid(axis='y', alpha=0.3)
+    ax.grid(axis="y", alpha=0.3)
     ax.set_axisbelow(True)
 
     plt.tight_layout()
@@ -161,7 +159,7 @@ def plot_multiple_choice(
     counts = {}
     for col in columns:
         # Extract option name (last part after underscore)
-        option_name = col.split('_')[-1] if '_' in col else col
+        option_name = col.split("_")[-1] if "_" in col else col
         counts[option_name] = df[col].sum()
 
     counts = pd.Series(counts)
@@ -191,37 +189,38 @@ def plot_multiple_choice(
 
     # Set labels
     ax.set_xticks(range(len(counts)))
-    ax.set_xticklabels(counts.index, rotation=45, ha='right')
-    ax.set_ylabel('Number of Selections')
-    ax.set_title(title or 'Multiple Choice Responses')
+    ax.set_xticklabels(counts.index, rotation=45, ha="right")
+    ax.set_ylabel("Number of Selections")
+    ax.set_title(title or "Multiple Choice Responses")
 
     # Add percentage labels
     if show_percentages:
         for i, (bar, pct) in enumerate(zip(bars, percentages.values)):
             height = bar.get_height()
             ax.text(
-                bar.get_x() + bar.get_width() / 2.,
+                bar.get_x() + bar.get_width() / 2.0,
                 height,
-                f'{pct:.1%}\n(n={int(height)})',
-                ha='center',
-                va='bottom',
-                fontsize=9
+                f"{pct:.1%}\n(n={int(height)})",
+                ha="center",
+                va="bottom",
+                fontsize=9,
             )
 
     # Add grid
-    ax.grid(axis='y', alpha=0.3)
+    ax.grid(axis="y", alpha=0.3)
     ax.set_axisbelow(True)
 
     # Add note about multiple selections
     fig.text(
-        0.99, 0.01,
-        f'Note: Percentages based on {total_respondents} total respondents. '
-        'Multiple selections allowed.',
-        ha='right',
-        va='bottom',
+        0.99,
+        0.01,
+        f"Note: Percentages based on {total_respondents} total respondents. "
+        "Multiple selections allowed.",
+        ha="right",
+        va="bottom",
         fontsize=8,
-        style='italic',
-        color='gray'
+        style="italic",
+        color="gray",
     )
 
     plt.tight_layout()
@@ -271,9 +270,9 @@ def plot_top_n(
     return plot_single_choice(
         df=df,
         column=column,
-        title=title or f'Top {n} {column}',
+        title=title or f"Top {n} {column}",
         show_percentages=show_percentages,
-        sort_by='count',
+        sort_by="count",
         top_n=n,
         figsize=figsize,
         color_palette=color_palette,
@@ -325,7 +324,9 @@ def plot_grouped_bars(
     >>> plt.show()
     """
     # Pivot data for grouped bar chart
-    pivot_df = df.pivot(index=category_column, columns=group_column, values=value_column)
+    pivot_df = df.pivot(
+        index=category_column, columns=group_column, values=value_column
+    )
 
     # Create figure
     fig, ax = plt.subplots(figsize=figsize)
@@ -334,19 +335,19 @@ def plot_grouped_bars(
     colors = get_palette(color_palette, n_colors=len(pivot_df.columns))
 
     # Create grouped bar chart
-    pivot_df.plot(kind='bar', ax=ax, color=colors, width=0.8)
+    pivot_df.plot(kind="bar", ax=ax, color=colors, width=0.8)
 
     # Set labels
-    ax.set_xlabel(category_column.replace('_', ' ').title())
-    ax.set_ylabel(value_column.replace('_', ' ').title())
-    ax.set_title(title or f'{category_column} by {group_column}')
-    ax.legend(title=group_column.replace('_', ' ').title())
+    ax.set_xlabel(category_column.replace("_", " ").title())
+    ax.set_ylabel(value_column.replace("_", " ").title())
+    ax.set_title(title or f"{category_column} by {group_column}")
+    ax.legend(title=group_column.replace("_", " ").title())
 
     # Rotate x labels
-    plt.xticks(rotation=45, ha='right')
+    plt.xticks(rotation=45, ha="right")
 
     # Add grid
-    ax.grid(axis='y', alpha=0.3)
+    ax.grid(axis="y", alpha=0.3)
     ax.set_axisbelow(True)
 
     plt.tight_layout()

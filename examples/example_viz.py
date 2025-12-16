@@ -1,122 +1,90 @@
 """
-TidyViz Viz Module Example
+TidyViz Visualization Examples
 
-Demonstrates visualization functions for survey data.
+Demonstrates core visualization functions for survey data analysis.
 """
 
 import os
 import pandas as pd
+import matplotlib
+
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import tidyviz as tv
 
-# Get the directory where this script is located
+# Setup paths
 script_dir = os.path.dirname(os.path.abspath(__file__))
-data_path = os.path.join(script_dir, 'sample_survey_data.csv')
-output_dir = os.path.join(script_dir, 'outputs')
-
-# Create outputs directory if it doesn't exist
+data_path = os.path.join(script_dir, "sample_survey_data.csv")
+output_dir = os.path.join(script_dir, "outputs")
 os.makedirs(output_dir, exist_ok=True)
 
-print("=" * 70)
-print("TidyViz Viz Module Examples")
-print("=" * 70)
-
-# Load sample survey data
-print("\n[1] Loading survey data...")
+# Load data
 df = pd.read_csv(data_path)
-print(f"Loaded {len(df)} responses")
 
-# Set visualization style
-tv.viz.set_survey_style(style='default', palette='categorical')
+# ============================
+# Single Choice Visualizations
+# ============================
 
-# Example 1: Single choice visualization - Preferred Contact
-print("\n[2] Creating single choice visualizations...")
-fig1 = tv.viz.plot_single_choice(
+# Basic single choice plot with percentages
+tv.viz.set_survey_style(style="default", palette="categorical")
+tv.viz.plot_single_choice(
     df,
-    'preferred_contact',
-    title='Preferred Contact Method',
+    "preferred_contact",
+    title="Preferred Contact Method",
     show_percentages=True,
-    sort_by='count'
+    sort_by="count",
 )
-output_path = os.path.join(output_dir, 'viz_preferred_contact.png')
-plt.savefig(output_path, dpi=150, bbox_inches='tight')
-plt.close()
-print(f"    Saved: {output_path}")
-
-# Example 2: Single choice visualization - Usage Frequency
-fig2 = tv.viz.plot_single_choice(
-    df,
-    'usage_frequency',
-    title='Product Usage Frequency',
-    show_percentages=True,
-    color_palette='sequential'
+plt.savefig(
+    os.path.join(output_dir, "single_choice_basic.png"), dpi=150, bbox_inches="tight"
 )
-output_path = os.path.join(output_dir, 'viz_usage_frequency.png')
-plt.savefig(output_path, dpi=150, bbox_inches='tight')
 plt.close()
-print(f"    Saved: {output_path}")
 
-# Example 3: Single choice visualization - Gender Demographics
-fig3 = tv.viz.plot_single_choice(
-    df,
-    'gender',
-    title='Respondent Demographics',
-    show_percentages=True,
-    color_palette='default'
+# Single choice with sequential color palette
+tv.viz.set_survey_style(palette="sequential")
+tv.viz.plot_single_choice(
+    df, "usage_frequency", title="Product Usage Frequency", show_percentages=True
 )
-output_path = os.path.join(output_dir, 'viz_demographics.png')
-plt.savefig(output_path, dpi=150, bbox_inches='tight')
+plt.savefig(
+    os.path.join(output_dir, "single_choice_sequential.png"),
+    dpi=150,
+    bbox_inches="tight",
+)
 plt.close()
-print(f"    Saved: {output_path}")
 
-# Example 4: Multiple choice visualization
-print("\n[3] Creating multiple choice visualization...")
-# First expand the multiple choice column
-df_expanded = tv.tidy.expand_multiple_choice(df, 'favorite_colors', keep_original=True)
-color_columns = [col for col in df_expanded.columns if col.startswith('favorite_colors_')]
+# =============================
+# Multiple Choice Visualization
+# =============================
 
-fig4 = tv.viz.plot_multiple_choice(
+# Expand multiple choice column to binary indicators
+df_expanded = tv.tidy.expand_multiple_choice(df, "favorite_colors")
+color_cols = [col for col in df_expanded.columns if col.startswith("favorite_colors_")]
+
+# Plot multiple choice responses
+tv.viz.set_survey_style(palette="categorical")
+tv.viz.plot_multiple_choice(
     df_expanded,
-    color_columns,
-    title='Favorite Colors (Multiple Selection)',
+    color_cols,
+    title="Favorite Colors (Multiple Selection)",
     show_percentages=True,
-    sort_by='count'
+    sort_by="count",
 )
-output_path = os.path.join(output_dir, 'viz_favorite_colors.png')
-plt.savefig(output_path, dpi=150, bbox_inches='tight')
-plt.close()
-print(f"    Saved: {output_path}")
-
-# Example 5: Different color palettes
-print("\n[4] Creating visualizations with different palettes...")
-
-# Sequential palette
-tv.viz.set_survey_style(palette='sequential')
-fig5 = tv.viz.plot_single_choice(
-    df,
-    'usage_frequency',
-    title='Usage Frequency (Sequential Palette)',
-    show_percentages=True
+plt.savefig(
+    os.path.join(output_dir, "multiple_choice.png"), dpi=150, bbox_inches="tight"
 )
-output_path = os.path.join(output_dir, 'viz_sequential_palette.png')
-plt.savefig(output_path, dpi=150, bbox_inches='tight')
 plt.close()
-print(f"    Saved: {output_path}")
 
-# Diverging palette
-tv.viz.set_survey_style(palette='Set2')
-fig6 = tv.viz.plot_single_choice(
-    df,
-    'preferred_contact',
-    title='Preferred Contact (Set2 Palette)',
-    show_percentages=True
+# =====================
+# Custom Color Palettes
+# =====================
+
+# Using named matplotlib colormap
+tv.viz.set_survey_style(palette="Set2")
+tv.viz.plot_single_choice(
+    df, "gender", title="Demographics (Set2 Palette)", show_percentages=True
 )
-output_path = os.path.join(output_dir, 'viz_set2_palette.png')
-plt.savefig(output_path, dpi=150, bbox_inches='tight')
+plt.savefig(
+    os.path.join(output_dir, "custom_palette.png"), dpi=150, bbox_inches="tight"
+)
 plt.close()
-print(f"    Saved: {output_path}")
 
-print("\n" + "=" * 70)
-print("Viz Module Examples Complete!")
-print(f"Check the outputs directory: {output_dir}")
-print("=" * 70)
+print(f"Visualizations saved to: {output_dir}")

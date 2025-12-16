@@ -53,9 +53,8 @@ def check_response_range(
     result_df = df.copy()
 
     # Create mask for valid values (accounting for NaN)
-    valid_mask = (
-        (result_df[column].isna()) |
-        ((result_df[column] >= min_val) & (result_df[column] <= max_val))
+    valid_mask = (result_df[column].isna()) | (
+        (result_df[column] >= min_val) & (result_df[column] <= max_val)
     )
     invalid_mask = ~valid_mask
 
@@ -287,7 +286,6 @@ def check_logical_consistency(
     for rule in rules:
         rule_name = rule.get("name", "unnamed_rule")
         condition = rule.get("condition")
-        columns = rule.get("columns", [])
 
         if condition is None:
             raise ValueError(f"Rule '{rule_name}' must have a 'condition' function")
@@ -296,8 +294,6 @@ def check_logical_consistency(
         try:
             result_df[f"consistent_{rule_name}"] = df.apply(condition, axis=1)
         except Exception as e:
-            raise ValueError(
-                f"Error applying rule '{rule_name}': {str(e)}"
-            )
+            raise ValueError(f"Error applying rule '{rule_name}': {str(e)}")
 
     return result_df

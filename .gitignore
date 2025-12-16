@@ -1,4 +1,7 @@
-/.claude/
-/.venv/
-/.vscode/
-WORKFLOW.md
+.claude
+.venv
+.vscode
+.pytest_cache
+.flake8
+.coverage
+outputs
