@@ -70,12 +70,67 @@ flake8 src/ tests/
 black src/ tests/ && flake8 src/ tests/
 ```
 
-## Building and Publishing
+## Releasing a New Version
 
-8. Build distribution packages:
+### Pre-Release Checklist
+
+8. Before releasing, ensure:
 
 ```bash
-# Clean previous builds (optional but recommended)
+# All tests pass
+pytest
+
+# Code is formatted
+black src/ tests/
+
+# Code passes linting
+flake8 src/ tests/
+```
+
+### Version Bump Process
+
+9. Update version number in **two** files:
+
+**File 1: `pyproject.toml`**
+```toml
+[project]
+version = "0.1.1"  # Update this
+```
+
+**File 2: `src/tidyviz/__init__.py`**
+```python
+__version__ = "0.1.1"  # Update this
+```
+
+10. Update `CHANGELOG.md`:
+
+Add a new section at the top with your changes:
+```markdown
+## [0.1.1] - 2025-01-XX
+
+### Added
+- New features you added
+
+### Changed
+- Things you modified
+
+### Fixed
+- Bugs you fixed
+```
+
+11. Commit version bump:
+
+```bash
+git add pyproject.toml src/tidyviz/__init__.py CHANGELOG.md
+git commit -m "Bump version to 0.1.1"
+```
+
+### Building and Publishing
+
+12. Build distribution packages:
+
+```bash
+# Clean previous builds (recommended)
 rm -rf dist/ build/ src/*.egg-info
 
 # Build both wheel and source distribution
@@ -83,27 +138,52 @@ python -m build
 ```
 
 This creates two files in `dist/`:
-- `tidyviz-0.1.0-py3-none-any.whl` (wheel distribution)
-- `tidyviz-0.1.0.tar.gz` (source distribution)
+- `tidyviz-<version>-py3-none-any.whl` (wheel distribution)
+- `tidyviz-<version>.tar.gz` (source distribution)
 
-9. Validate built packages:
+13. Validate built packages:
 
 ```bash
 # Check packages for common issues
 twine check dist/*
 ```
 
-10. Upload to PyPI:
+14. Upload to PyPI:
 
 ```bash
-# Upload to TestPyPI first (recommended for testing)
+# Option 1: Upload to TestPyPI first (recommended for testing)
 twine upload --repository testpypi dist/*
 
-# Upload to PyPI (production)
+# Test installation from TestPyPI
+pip install --index-url https://test.pypi.org/simple/ tidyviz
+
+# Option 2: Upload to PyPI (production)
 twine upload dist/*
 ```
 
 **Note:** You need a PyPI account and API token to upload packages.
+
+### Post-Release
+
+15. Create git tag and push:
+
+```bash
+# Create annotated tag
+git tag -a v0.1.1 -m "Release version 0.1.1"
+
+# Push commits
+git push origin main
+
+# Push tag
+git push origin v0.1.1
+```
+
+16. Create GitHub release (optional):
+
+Go to GitHub repository → Releases → Create new release
+- Tag: v0.1.1
+- Title: TidyViz v0.1.1
+- Description: Copy from CHANGELOG.md
 
 ## Quick Reference
 
@@ -115,4 +195,15 @@ pytest                         # Run tests
 black src/ tests/              # Format code
 python -m build                # Build package
 deactivate                     # Deactivate venv
+
+# Release workflow (compact)
+pytest && black src/ tests/ && flake8 src/ tests/  # Pre-release checks
+# Update: pyproject.toml, __init__.py, CHANGELOG.md
+git add pyproject.toml src/tidyviz/__init__.py CHANGELOG.md
+git commit -m "Bump version to X.X.X"
+rm -rf dist/ build/ src/*.egg-info && python -m build
+twine check dist/*
+twine upload dist/*  # Requires PyPI credentials
+git tag -a vX.X.X -m "Release version X.X.X"
+git push origin main && git push origin vX.X.X
 ```

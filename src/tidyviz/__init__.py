@@ -4,7 +4,7 @@ TidyViz: Tidy and Visualize Survey Data
 A Python package for tidying and visualizing survey data.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 # Import submodules
 from . import tidy

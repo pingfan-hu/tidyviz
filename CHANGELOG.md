@@ -5,6 +5,27 @@ All notable changes to TidyViz will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] - 2025-01-22
+
+### Added
+- Comprehensive test suite for `viz` module with 65 new tests
+- Tests for all visualization functions: `plot_single_choice()`, `plot_multiple_choice()`, `plot_top_n()`, `plot_grouped_bars()`
+- Tests for all styling functions: `set_survey_style()`, `get_palette()`, `format_percentage_axis()`
+- `.flake8` configuration file to ensure code quality standards match Black formatter
+
+### Changed
+- Improved overall test coverage from 58% to 99%
+- Simplified documentation structure from 4 files to 2:
+  - `docs/QUICK_START.md` - Quick start guide for new users
+  - `docs/USER_MANUAL.md` - Comprehensive API reference and tutorials
+- Updated `README.md` to reflect new documentation structure
+- Updated `WORKFLOW.md` with comprehensive release process documentation
+
+### Fixed
+- Minor formatting issues in test files to comply with flake8 standards
+
+---
+
 ## [0.1.0] - 2025-01-XX
 
 ### Added

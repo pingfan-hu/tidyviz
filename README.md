@@ -163,11 +163,10 @@ See the [`examples/`](examples/) directory for complete workflows:
 
 ## Documentation
 
-📚 **[Complete Documentation](docs/)** - Full guides and API reference
+📚 **[Documentation](docs/)**
 
-- **[API Reference](docs/API.md)** - Detailed function documentation with parameters and examples
-- **[User Guide](docs/USER_GUIDE.md)** - Comprehensive tutorials and workflows
-- **[Quick Reference](docs/QUICK_REFERENCE.md)** - Concise syntax cheat sheet
+- **[Quick Start](docs/QUICK_START.md)** - Get up and running in minutes
+- **[User Manual](docs/USER_MANUAL.md)** - Complete API reference, tutorials, and workflows
 
 ## Requirements
 
